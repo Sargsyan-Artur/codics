@@ -1,0 +1,56 @@
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+{% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+        <button type="button"> <a href="/logout"> logout  </a></button>
+
+
+
+        <h1>Django File Uploading</h1>
+        {% if products %}
+            {% for product in products %}
+                <form method="post">
+                 {% csrf_token %}
+                    <h1> {{product.name}} </h1>
+                    <h1> {{product.count}} </h1>
+                    <h2> {{product.price}} </h2>
+                    <h3> {{product.date}} </h3>
+
+                    <img src="{{ product.images.url}}" alt="{{ product.name }}" width="200" height="100" >
+                    <input type="hidden" value="{{product.id}}" name="product">
+                    <input type="submit" value="add to basket"/>
+                </form>
+            {% endfor %}
+        {%endif%}
+
+
+        <h1><a href="basket/"> BASKET </a>></h1>
+
+
+{% block content %}
+
+
+{% endblock %}
+
+
+
+
+{% else %}
+        <button type="button"> <a href="/"> login  </a></button>
+        <button type="button"> <a href="/registration"> reistration  </a></button>
+         <p>You are not logged in</p>
+
+{% endif %}
+
+==============
+
+
+
+</body>
+</html>

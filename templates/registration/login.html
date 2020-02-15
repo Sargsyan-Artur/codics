@@ -1,0 +1,20 @@
+{% if user.is_authenticated %}
+you are Logged
+
+<a href="home/"> home  </a>
+ <button type="button"> <a href="/logout"> logout  </a></button>
+
+{% else %}
+{% block content %}
+
+<h2>Login</h2>
+      <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+      <button type="button"> <a href="/registration/"> registration  </a></button>
+
+{% endblock %}
+
+{% endif %}
