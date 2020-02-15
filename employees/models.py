@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 class Employee(models.Model):
     name = models.CharField(max_length=200)
     surname = models.CharField(max_length=200)
@@ -22,9 +23,6 @@ class Employee(models.Model):
         return self.name
 
 
-
-
-
 class Products(models.Model):
     name = models.CharField(max_length=200)
     images = models.ImageField(upload_to="images/", null=True, blank=True)
@@ -41,33 +39,19 @@ class Products(models.Model):
 
     type = models.CharField(max_length=4, choices=TYPE, blank=True, default='', help_text='v')
 
-
     def __str__(self):
         return self.name
 
 
-# class BasketManager(models.Manager):
-#
-#     def get_queryset(self):
-#         qs = super().get_queryset()
-#         print(qs)
-#         return qs.select_related('products')
-
-
 class Basket(models.Model):
-    #name = models.CharField(max_length=128)
-    user = models.ForeignKey(User,  on_delete=models.CASCADE)
-    products = models.ForeignKey(Products, on_delete=models.CASCADE)
-    # objects = BasketManager()
+    user = models.OneToOneField(User,  on_delete=models.CASCADE)
+    products = models.ManyToManyField(Products, through='BasketProducts')
 
     def __str__(self):
-        context = {'user': self.user, 'prod': self.products}
-        context = str(self.products)
-        return self.products.name #str(self.id)
+        return self.user.username
 
 
+class BasketProducts(models.Model):
+    products = models.ForeignKey(Products, on_delete=models.CASCADE)
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
 
-# class BasketProducts(models.Model):
-#     products = models.ForeignKey(Products, on_delete=models.CASCADE)
-#     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
-#

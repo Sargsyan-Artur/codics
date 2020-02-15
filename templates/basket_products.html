@@ -5,39 +5,23 @@
     <title>Title</title>
 </head>
 <body>
+<h1><a href="/home"> Home </a> </h1>
 <h1>basketg</h1>
 
- {% if context %}
+    {% for product in products %}
+        <form action="{% url 'home:delete' product.id %}" method="post">
+         {% csrf_token %}
+            <h1> {{product.name}} </h1>
+            <h1> {{product.count}} </h1>
+            <h2> {{product.price}} </h2>
+            <h3> {{product.date}} </h3>
 
+            <img src="{{ product.images.url}}" alt="{{ basket.name }}" width="200" height="100" >
+            <input type="hidden" value="{{basket.id}}" name="basket">
+            <input type="submit" value="delete"/>
+        </form>
 
-
-<!--{% for cont in context %}-->
-<!--    {{cont.name}}-->
-<!--    {{cont.price}}-->
-
-<!--    {%for a in prod.basket_set.select_related.all%}-->
-<!--       {{a.name}}-->
-
-<!--    {% endfor %}-->
-<!--{% endfor%}-->
-
-
-            {% for basket in context %}
-
-<!--                <form method="post">-->
-                <form action="{% url 'home:delete' basket.id %}" method="post">
-                 {% csrf_token %}
-                    <h1> {{basket.name}} </h1>
-                    <h1> {{basket.count}} </h1>
-                    <h2> {{basket.price}} </h2>
-                    <h3> {{basket.date}} </h3>
-
-                    <img src="{{ basket.images.url}}" alt="{{ basket.name }}" width="200" height="100" >
-                    <input type="hidden" value="{{basket.id}}" name="basket">
-                    <input type="submit" value="delete"/>
-                </form>
-            {% endfor %}
-        {%endif%}
+    {% endfor %}
 
 </body>
 </html>

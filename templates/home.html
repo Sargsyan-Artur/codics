@@ -4,13 +4,15 @@
     <title>Title</title>
 </head>
 
+{% load static %}
 
 
 {% if user.is_authenticated %}
         <p>Welcome {{ user.username }} !!!</p>
         <button type="button"> <a href="/logout"> logout  </a></button>
 
-
+        <h1><a href="basket/"> BASKET </a>></h1>
+<div class="form-style-6">
 
         <h1>Django File Uploading</h1>
         {% if products %}
@@ -29,8 +31,8 @@
             {% endfor %}
         {%endif%}
 
+</div>
 
-        <h1><a href="basket/"> BASKET </a>></h1>
 
 
 {% block content %}
