@@ -42,5 +42,5 @@ GRANT ALL PRIVILEGES ON codics.* TO 'user'@'%' WITH GRANT OPTION;
 
 ```bash
 python manage.py migrate
-python manage.py runserver (by default run localhost:8000)
+python manage.py runserver (by default run on localhost:8000)
 ```
