@@ -7,7 +7,7 @@ def home(request):
     if request.method == 'POST':
 
         product = get_object_or_404(Products, id=request.POST['product'])
-        basket, _ = Basket.objects.get_or_create(user=request.user)
+        basket = Basket.objects.get_or_create(user=request.user)
         basket.products.add(product)
         basket.save()
 
