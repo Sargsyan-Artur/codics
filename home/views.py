@@ -65,6 +65,7 @@ def basket(request):
 
     return render(request, 'basket_products.html', {'context': context, 'products': products})
 
+
 # def basket(request):
 #     products = Products.objects.all()
 #     # print(type(products))
