@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1><a href="/home"> Home </a> </h1>
-<h1>basketg</h1>
+
+<h1>basket</h1>
 
     {% for product in products %}
         <form action="{% url 'home:delete' product.id %}" method="post">

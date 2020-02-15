@@ -5,7 +5,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
 
-
 def signup_view(request):
     form = SignUpForm(request.POST)
     print(request.POST)
