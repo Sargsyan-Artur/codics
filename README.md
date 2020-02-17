@@ -44,3 +44,15 @@ GRANT ALL PRIVILEGES ON codics.* TO 'user'@'%' WITH GRANT OPTION;
 python manage.py migrate
 python manage.py runserver (by default run on localhost:8000)
 ```
+
+##  Create Admin
+
+```bash
+(codics) artur@artur-desktop:/var/www/codics$ python manage.py createsuperuser
+Username: admin
+Email address: admin@example.com
+Password: **********
+http://127.0.0.1:8000/admin/login/?next=/admin/
+```
+
+
