@@ -1,6 +1,5 @@
 # Codics
-
-This is my homework I created a store site.
+I created a store site.
 I used Django as a web server and MySQL database.
 
 ## Installation
